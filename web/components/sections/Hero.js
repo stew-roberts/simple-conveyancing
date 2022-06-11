@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './Hero.module.css'
 import client from '../../client'
 import SimpleBlockContent from '../SimpleBlockContent'
 import Cta from '../Cta'
@@ -11,7 +10,7 @@ function urlFor(source) {
 }
 
 function Hero(props) {
-  const {heading, backgroundImage, tagline, ctas} = props
+  const {backgroundImage, tagline, ctas} = props
 
   const style = backgroundImage
     ? {
@@ -20,17 +19,26 @@ function Hero(props) {
     : {}
 
   return (
-    <div className={styles.root} style={style}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{heading}</h1>
-        <div className={styles.tagline}>{tagline && <SimpleBlockContent blocks={tagline} />}</div>
-        {ctas && (
-          <div className={styles.ctas}>
-            {ctas.map((cta) => (
-              <Cta {...cta} key={cta._key} />
-            ))}
-          </div>
-        )}
+    <div style={style} className="h-96">
+      <div>
+        <div className="sm:w-fuil md:w-3/5 mx-auto px-4 py-20 text-white">
+          <div className="backdrop-blur-2xl overflow-auto p-12">
+            {/* <h1 className="text-2xl font-bold tracking-wide block">{heading}</h1> */}
+            <div className="tracking-wide">{tagline && <SimpleBlockContent blocks={tagline} />}</div>
+          
+        
+            {/* <h1>{heading}</h1>
+            <div>{tagline && <SimpleBlockContent blocks={tagline} />}</div> */}
+            {ctas && (
+              <div>
+                {ctas.map((cta) => (
+                  <Cta {...cta} key={cta._key} />
+                ))}
+              </div>
+            )}
+        </div>
+        
+        </div>
       </div>
     </div>
   )

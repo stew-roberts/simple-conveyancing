@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import styles from './Cta.module.css'
 
 function cta(props) {
   const {title, route, link} = props
@@ -15,20 +14,20 @@ function cta(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <a className={styles.button}>{title}</a>
+        <a className="">{title}</a>
       </Link>
     )
   }
 
   if (link) {
     return (
-      <a className={styles.button} href={link}>
+      <a className="block bg-rose-500 p-4 font-bold mt-4 w-32 rounded-md" href={link}>
         {title}
       </a>
     )
   }
 
-  return <a className={styles.button}>{title}</a>
+  return <a className="">{title}</a>
 }
 
 cta.propTypes = {

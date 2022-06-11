@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p strong {
+    color: rgb(244 63 94);
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 1em 0 1em;
+}
