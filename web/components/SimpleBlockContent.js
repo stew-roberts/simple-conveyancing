@@ -17,7 +17,7 @@ function SimpleBlockContent(props) {
       value={blocks}
       components={{
         types: {
-          embedHTML: EmbedHTML,
+          embedHTML: EmbedHTML ? EmbedHTML : null,
           figure: Figure,
         },
       }}

@@ -3,6 +3,7 @@ import groq from 'groq'
 import {NextSeo} from 'next-seo'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Head from 'next/head'
 
 import client from '../client'
 import Layout from '../components/Layout'
@@ -114,6 +115,23 @@ const LandingPage = (props) => {
 
   return (
     <Layout config={config}>
+      <Head>
+        {props.slug === 'instant-conveyancing-quote' ? 
+          <script
+          type='text/javascript'
+          dangerouslySetInnerHTML={{ __html: `
+          var tcnconfig = {
+            license: '5401A685-AC71-49AD-B9511F2FC3982B59', /* This is where you put your unique license key */
+            container: 'conveyancing-quotes' /* This is the unique id of your container */
+            };
+            (function() { 
+              var tcnjs = document.createElement('script'); tcnjs.type = 'text/javascript'; tcnjs.async = true;
+              tcnjs.src = 'https://conveyancing.tcn-online.com/engine.min.js?' + Math.random();
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tcnjs, s);
+            })();
+          ` }} />
+        : null }
+      </Head>
       <NextSeo
         title={title}
         titleTemplate={`%s | ${config.title}`}

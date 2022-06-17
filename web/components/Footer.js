@@ -8,7 +8,7 @@ import {getPathFromSlug, slugParamToPath} from '../utils/urls'
 function Footer(props) {
   const {navItems, text, router} = props
   return (
-    <div>
+    <div className="mt-10 w-full flex justify-center bg-gradient-to-r from-pink-700 to-indigo-800 p-2 pl-20 lg:px-20 text-white align-center">
       <nav>
         <ul>
           {navItems &&

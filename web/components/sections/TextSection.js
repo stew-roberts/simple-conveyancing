@@ -4,13 +4,13 @@ import SimpleBlockContent from '../SimpleBlockContent'
 
 function TextSection(props) {
   const {heading, text} = props
-
   return (
-    <div className="w-3/5 mx-auto">
+    <div className="container mx-auto px-5">
       <section>
         
-        <h2 className="block mt-4 mb-4 text-2xl">{heading}</h2>
+        <h2 className="block mt-4 mb-4">{heading}</h2>
         {text && <SimpleBlockContent blocks={text} />}
+        {heading === "Instant Online Conveyancing Quote" ? <div id="conveyancing-quotes"></div> : null}
       </section>
     </div>
   )

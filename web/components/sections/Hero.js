@@ -10,27 +10,28 @@ function urlFor(source) {
 }
 
 function Hero(props) {
-  const {backgroundImage, tagline, ctas} = props
+  const {backgroundImage, heading, tagline, ctas} = props
 
   const style = backgroundImage
     ? {
-        backgroundImage: `url("${urlFor(backgroundImage).width(2000).auto('format').url()}")`,
+        backgroundImage: `url("${urlFor(backgroundImage).height(800).url()}")`,
       }
     : {}
 
   return (
-    <div style={style} className="h-96">
-      <div>
-        <div className="sm:w-fuil md:w-3/5 mx-auto px-4 py-20 text-white">
-          <div className="backdrop-blur-2xl overflow-auto p-12">
-            {/* <h1 className="text-2xl font-bold tracking-wide block">{heading}</h1> */}
+    // bg-gradient-to-r from-pink-700 to-indigo-800
+    <div>
+      <div style={style} className="bg-fixed bg-cover">
+        <div className="sm:w-full md:w-3/5 mx-auto h-[30em] flex items-center justify-center text-white">
+          <div className="overflow-auto p-12">
+            <h1 className="text-2xl font-bold tracking-wide block">{heading}</h1>
             <div className="tracking-wide">{tagline && <SimpleBlockContent blocks={tagline} />}</div>
           
         
             {/* <h1>{heading}</h1>
             <div>{tagline && <SimpleBlockContent blocks={tagline} />}</div> */}
             {ctas && (
-              <div>
+              <div className="h-auto flex justify-center">
                 {ctas.map((cta) => (
                   <Cta {...cta} key={cta._key} />
                 ))}

@@ -14,14 +14,14 @@ function cta(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <a className="">{title}</a>
+        <a className="block border-2 border-white px-12 py-1 mt-8 rounded-full text-center uppercase hover:bg-white hover:text-pink-700">{title}</a>
       </Link>
     )
   }
 
   if (link) {
     return (
-      <a className="block bg-rose-500 p-4 font-bold mt-4 w-32 rounded-md" href={link}>
+      <a className="block border-2 border-white px-12 py-1 mt-8 rounded-full text-center uppercase hover:bg-white hover:text-pink-700" href={link}>
         {title}
       </a>
     )
