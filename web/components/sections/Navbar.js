@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {withRouter} from 'next/router'
 import Link from 'next/link'
-import {getPathFromSlug, slugParamToPath} from '../../utils/urls'
+import SVG from 'react-inlinesvg'
+import {getPathFromSlug} from '../../utils/urls'
 import {FaBars, FaTimes} from 'react-icons/fa'
 
 
 
 const Navbar = (props) => {
     /* set consts */
-    const { logo, title, navItems } = props
+    const {logo, title, navItems} = props
     const navbarClass = 'duration-300 fixed w-full flex justify-between p-2 pl-20 lg:px-20 text-white align-center';
     const navbarScrollClass = 'duration-300 fixed w-full z-[999999] flex justify-between p-2 pl-20 lg:px-20 text-white bg-gradient-to-r from-pink-700 to-indigo-800 opacity-90 drop-shadow-[0_10px_10px_rgba(0,0,0,0.45)]';
     const [colour, setColour] = useState(false);
@@ -107,9 +108,11 @@ Navbar.propTypes = {
     logo: PropTypes.shape({
       asset: PropTypes.shape({
         url: PropTypes.string,
+        extension: PropTypes.string,
       }),
       logo: PropTypes.string,
+      title: PropTypes.string,
     }),
-  }
+}
 
 export default withRouter(Navbar)

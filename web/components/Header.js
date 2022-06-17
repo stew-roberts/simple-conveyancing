@@ -62,10 +62,8 @@ class Header extends Component {
     return <img src={logo.asset.url} alt={logo.title} className="" />
   }
   
-
   render() {
     const {title = 'Missing title', navItems, logo} = this.props
-    //console.log(this.props);
     return (
       <>
       <Navbar logo={logo} title={title} navItems={navItems} />
