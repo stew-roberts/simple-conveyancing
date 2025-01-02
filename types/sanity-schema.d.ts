@@ -944,3 +944,4 @@ export type ConveyancingQuote = {
 };
 
 export type Documents = SiteConfig | Page | Post | Author | Category;
+export type Objects = Cta | EmbedIframe | Figure | Hero | Posts | TextWithImage | FeatureItem | FeatureSection | TimelineItem | Timeline | PricingCard | PricingSection | BackgroundOptions | Seo | TextOnly | ImageOnly | NavigationLink | LinkGroup | ConveyancingQuote;
