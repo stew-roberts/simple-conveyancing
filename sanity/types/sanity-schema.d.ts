@@ -41,118 +41,37 @@ export type {
  *
  *
  */
-export interface SiteConfig extends SanityDocument {
-  _type: "siteConfig";
+export type SiteConfig = {
+  _id: string
+  _type: 'siteConfig'
+  title: string
+  url: string
+  tcnLicenceKey?: string
+  footer: {
+    linkGroups: LinkGroup[]
+  }
+}
 
-  /**
-   * Site Title — `string`
-   *
-   * The title of the website.
-   */
-  title?: string;
+export type LinkGroup = {
+  groupTitle: string
+  links: NavLink[]
+}
 
-  /**
-   * Site URL — `url`
-   *
-   * The main site URL. Used to create canonical URLs.
-   */
-  url?: string;
+export type NavLink = {
+  displayText: string
+  linkType: 'internal' | 'external'
+  internalLink?: InternalLink
+  externalLink?: {
+    url: string
+  }
+}
 
-  /**
-   * Contact Number — `string`
-   *
-   * Main contact number for the site.
-   */
-  telephone?: string;
-
-  /**
-   * Contact Email — `string`
-   *
-   * Main contact email for the site.
-   */
-  email?: string;
-
-  /**
-   * Front Page — `reference`
-   *
-   * Choose the page to be used as the front page.
-   */
-  frontpage?: SanityReference<Page>;
-
-  /**
-   * Brand Logo — `image`
-   *
-   * Best choice is to use an SVG where colors are set with currentColor.
-   */
-  logo?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Alternative Text — `string`
-   *
-   * Important for SEO and accessibility.
-   */
-  alt?: string;
-
-  /**
-   * Include Conveyancing Plugin — `boolean`
-   *
-   * Enable this to include the Conveyancing Plugin.
-   */
-  includeConveyancingPlugin?: boolean;
-
-  /**
-   * TCN Licence Key — `string`
-   *
-   * The licence key for the TCN Conveyancing Plugin.
-   */
-  tcnLicenceKey?: string;
-
-  /**
-   * Footer Title — `string`
-   *
-   * Optional title for the footer (e.g., "Stay Connected").
-   */
-  footerTitle?: string;
-
-  /**
-   * Text Blocks — `array`
-   *
-   * Add multiple text blocks.
-   */
-  textGroups?: Array<SanityKeyed<TextOnly>>;
-
-  /**
-   * Link Groups — `array`
-   *
-   * Add multiple groups of footer links.
-   */
-  linkGroups?: Array<SanityKeyed<LinkGroup>>;
-
-  /**
-   * Copyright Text — `string`
-   *
-   * Optional copyright text to display at the bottom of the footer.
-   */
-  copyrightText?: string;
-
-  /**
-   * Background Options — `array`
-   *
-   * optional background options for the footer.
-   */
-  backgroundOptions?: Array<SanityKeyed<BackgroundOptions>>;
-
-  /**
-   * Global SEO — `seo`
-   *
-   * SEO settings for the entire site.
-   */
-  globalSEO?: Seo;
+export type InternalLink = {
+  _type: 'page' | 'route' | string
+  title: string
+  slug: {
+    current: string
+  }
 }
 
 /**
@@ -175,7 +94,7 @@ export interface Page extends SanityDocument {
    *
    * The slug for the page
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 
   /**
    * Order Rank — `string`
@@ -467,7 +386,7 @@ export type TextWithImage = {
    *
    * Image for the text with image section.
    */
-  image?: {
+  image: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -789,12 +708,13 @@ export type Seo = {
 
 export type Cta = {
   _type: "cta";
+  key: number;
   /**
    * Navigation Link — `navigationLink`
    *
    * The location the button will link to. Can be an internal page or external URL.
    */
-  link?: NavigationLink;
+  link?: NavLink;
 
   /**
    * Open in New Tab — `boolean`
@@ -825,14 +745,14 @@ export type TextOnly = {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * Text — `portableText`
    *
    *
    */
-  text?: PortableText;
+  text: PortableText;
 };
 
 export type ImageOnly = {

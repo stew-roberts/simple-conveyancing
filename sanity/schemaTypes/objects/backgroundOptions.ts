@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
-import { faFillDrip } from '@fortawesome/free-solid-svg-icons';
+import { FaFillDrip } from 'react-icons/fa';
 
 export default defineType({
   name: 'backgroundOptions',
   title: 'Background Options',
   type: 'object',
+  icon: FaFillDrip,
   fields: [
     defineField({
       name: 'enableBackgroundColour',
@@ -36,10 +37,15 @@ export default defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title',
+      media: 'icon'
+    },
+    prepare({media}) {
       return {
         title: 'Background Options',
         subtitle: 'Customizable background settings',
+        media,
       };
     },
   },
