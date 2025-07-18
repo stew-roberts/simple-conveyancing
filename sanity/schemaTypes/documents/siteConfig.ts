@@ -48,6 +48,13 @@ export default defineType({
       description: 'Main contact email for the site.',
       group: 'general',
     }),
+        defineField({
+      name: 'address',
+      type: 'address',
+      title: 'Address',
+      description: 'The main address for the site. This is used in the footer and for SEO purposes.',
+      group: 'general',
+    }),
     defineField({
       name: 'frontpage',
       type: 'reference',

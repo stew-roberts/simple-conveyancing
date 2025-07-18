@@ -1,11 +1,11 @@
 import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import client from "@sanity/utils/config/client.config";
-import { SiteConfig } from '@sanity/types/sanity-schema';
+import { SiteConfigType } from '@sanity/types';
 import Image from 'next/image';
 
 interface LogoProps {
-  siteConfig: SiteConfig[];
+  siteConfig: SiteConfigType[];
 }
 
 const builder = imageUrlBuilder(client); // Initialize image URL builder with Sanity client
@@ -14,7 +14,7 @@ const Logo: React.FC<LogoProps> = ({ siteConfig }) => {
   const { logo, alt } = siteConfig[0];
 
   // Check if there's a logo image, and if so, generate the URL
-  const logoUrl = logo?.asset ? builder.image(logo.asset).url() : '';
+  const logoUrl = logo ? builder.image(logo).url() : '';
 
   return (
     <div className="logo">

@@ -17,6 +17,13 @@ export default defineType({
       description: 'The title of this group of links.',
     }),
     defineField({
+      name: 'showInSitemap',
+      type: 'boolean',
+      title: 'Show Link Group in Sitemap',
+      description: 'Whether this link group should be included in the sitemap.',
+      initialValue: true,
+    }),
+    defineField({
       name: 'links',
       type: 'array',
       title: 'Links',

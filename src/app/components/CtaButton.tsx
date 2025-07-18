@@ -1,8 +1,8 @@
 import React from "react";
-import { Cta } from "@sanity/types/sanity-schema";
+import { CallToActionType } from "@sanity/types";
 
 type Props = {
-  cta: Cta;
+  cta: CallToActionType;
 };
 
 export const CtaButton: React.FC<Props> = ({ cta }) => {

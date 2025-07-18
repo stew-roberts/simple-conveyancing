@@ -1,31 +1,54 @@
-import React from "react";
-import { PortableText, PortableTextBlock } from "@portabletext/react";
-
-type ConveyancingQuote = {
-  _type: "conveyancingQuote";
-  title?: string;
-  description?: PortableTextBlock; 
-};
+"use client";
+import React, { useEffect } from "react";
+import { ConveyancingQuoteType } from "@sanity/types";
+import TextOnly from "./TextOnly";
 
 type Props = {
-  quote: ConveyancingQuote;
+  quote: ConveyancingQuoteType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tcnConfig: any
 };
 
-const ConveyancingQuoteDisplay: React.FC<Props> = ({ quote }) => {
-  if (!quote) {
-    return null; // Handle missing quote gracefully
-  }
+const ConveyancingQuoteDisplay: React.FC<Props> = ({ tcnConfig, quote }) => {
+  useEffect(() => {
+    // Define the global config for TCN before loading the script
+    window.tcnconfig = {
+      license: tcnConfig.licence,
+      container: "conveyancing-quotes",
+    };
+
+    // Dynamically add the script tag only once
+    if (!document.getElementById("tcn-script")) {
+      const tcnjs = document.createElement("script");
+      tcnjs.id = "tcn-script";
+      tcnjs.type = "text/javascript";
+      tcnjs.async = true;
+      tcnjs.src =
+        "https://conveyancing.tcn-online.com/engine.min.js?" + Math.random();
+
+      // Optional: add an event listener for load to confirm script loaded
+      tcnjs.onload = () => {
+        console.log("TCN script loaded");
+      };
+
+      document.body.appendChild(tcnjs);
+    }
+
+    // Cleanup if needed on unmount
+    return () => {
+      const script = document.getElementById("tcn-script");
+      if (script) script.remove();
+    };
+  }, []);
+
+  if (!quote) return null;
 
   const { title, description } = quote;
 
   return (
-    <div className="conveyancing-quote">
-      {title && <h2 className="quote-title">{title}</h2>}
-      {description && (
-        <div className="quote-description">
-          <PortableText value={description} />
-        </div>
-      )}
+    <div>
+      { description && <TextOnly title={title} text={quote.description} /> }
+      <div id="conveyancing-quotes"></div>
     </div>
   );
 };

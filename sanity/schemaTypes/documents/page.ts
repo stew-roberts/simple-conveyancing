@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity';
-import { FaImage, FaBullhorn, FaFileCode, FaImages, FaAlignLeft, FaIndent, FaGoogle, FaListUl, FaTh } from 'react-icons/fa';
+import { FaImage, FaBullhorn, FaFileCode, FaImages, FaAlignLeft, FaIndent, FaGoogle, FaListUl, FaTh, FaEnvelope } from 'react-icons/fa';
 import { FaTimeline, FaMoneyBill1, FaRegRectangleList } from 'react-icons/fa6';
 
 export default defineType({
@@ -25,6 +25,13 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: 'showInNavigation',
+      title: 'Show in Navigation',
+      type: 'boolean',
+      description: 'If checked, this page will show in the navigation menu.',
+      initialValue: true,
     }),
     defineField({
       name: 'orderRank',
@@ -93,6 +100,11 @@ export default defineType({
           type: 'seo',
           title: 'SEO data',
           icon: FaGoogle,  // Icon for the SEO section
+        },
+        {
+          type: 'contactForm',
+          title: 'Contact Form',
+          icon: FaEnvelope,  // Icon for the Contact Form
         },
       ],
     }),

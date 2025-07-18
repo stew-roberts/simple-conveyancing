@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typeRoots": ["./sanity/types", "./node_modules/@types"],
     "plugins": [
       {
         "name": "next"
@@ -22,6 +23,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@sanity/*": ["./sanity/*"],
+      "@components/*": ["./src/app/components/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

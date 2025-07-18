@@ -20,6 +20,8 @@ import navigationLink from './objects/navigationLink';
 import linkGroup from './objects/linkGroup';
 import imageOnly from './objects/imageOnly';
 import conveyancingQuote from './objects/conveyancingQuote';
+import contactForm from './objects/contactForm';
+import address from './objects/address';
 
 // Page sections
 import hero from './objects/hero';
@@ -28,7 +30,6 @@ import posts from './objects/posts';
 import featureSection from './objects/featureSection';
 import timeline from './objects/timeline';
 import pricingSection from './objects/pricingSection';
-
 
 export const schemaTypes = [
     siteConfig,
@@ -56,5 +57,7 @@ export const schemaTypes = [
     navigationLink,
     linkGroup,
     conveyancingQuote,
+    contactForm,
+    address
 ];
 

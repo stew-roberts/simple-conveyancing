@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { getSlugForLink } from "@sanity/utils/sanity-utils";
-import { NavLink as NavLinkType } from '@sanity/types/sanity-schema.d';
+import { NavLinkType } from '@sanity/types';
 
 export const NavigationLink: React.FC<{link: NavLinkType, className?: string}> = ({link, className}) => {
   const { displayText, linkType, internalLink, externalLink } = link;
@@ -9,7 +9,6 @@ export const NavigationLink: React.FC<{link: NavLinkType, className?: string}> =
   // For internal links
   if (linkType === 'internal' && internalLink) {
     const customSlug = getSlugForLink({ displayText, linkType, internalLink, externalLink } as NavLinkType)
-    console.log('Custom slug:', customSlug)
     const slug = customSlug ?? internalLink.slug?.current ?? ''
     if (!slug) return null
 
@@ -25,6 +24,7 @@ export const NavigationLink: React.FC<{link: NavLinkType, className?: string}> =
     return (
       <a
         href={externalLink.url}
+        target="_blank"
       >
         {displayText}
       </a>

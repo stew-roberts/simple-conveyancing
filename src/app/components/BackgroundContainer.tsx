@@ -1,11 +1,11 @@
 import React from "react";
-import { BackgroundOptions } from "@sanity/types/sanity-schema";
+import { BackgroundOptionsType } from "@sanity/types";
 import imageUrlBuilder from "@sanity/image-url";
 import clientConfig from "@sanity/utils/config/client.config";
 
 type Props = {
   children: React.ReactNode;
-  backgroundOptions?: BackgroundOptions;
+  backgroundOptions?: BackgroundOptionsType;
 };
 
 const builder = imageUrlBuilder(clientConfig);
@@ -22,8 +22,8 @@ export const BackgroundContainer: React.FC<Props> = ({ children, backgroundOptio
   const backgroundStyles: React.CSSProperties = {
     backgroundColor: enableBackgroundColour && backgroundColour ? backgroundColour : undefined,
     backgroundImage:
-      enableBackgroundImage && backgroundImage?.asset
-        ? `url(${builder.image(backgroundImage.asset).url()})`
+      enableBackgroundImage && backgroundImage
+        ? `url(${builder.image(backgroundImage).url()})`
         : undefined,
     backgroundSize: "cover",
     backgroundPosition: "center",

@@ -12,6 +12,7 @@ export default async function Home() {
   const siteConfig = await getSiteConfig();
   const pages = await getPages();
   const page = await getPage("home");
+
   return (
     <div>
       <Navigation pages={pages} siteConfig={siteConfig} />

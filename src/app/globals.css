@@ -8,6 +8,10 @@ html {
     line-height: 1.5rem;
 }
 
+p {
+    font-size: 1.25rem;
+}
+
 p a {
     color: #be185d;
 }
