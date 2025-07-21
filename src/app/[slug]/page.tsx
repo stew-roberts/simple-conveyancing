@@ -1,7 +1,4 @@
-import { getPages } from "@sanity/utils/sanity-utils";
-import { getPage } from "@sanity/utils/sanity-utils";
-import { getPosts } from "@sanity/utils/sanity-utils";
-import { getSiteConfig } from "@sanity/utils/sanity-utils";
+import { getPages, getPage, getPosts, getSiteConfig } from "@sanity/utils/sanity-utils";
 import { Navigation } from "@components/Navigation";
 import Footer from "@components/Footer";
 import HeroSection from "@components/Hero";
@@ -17,7 +14,8 @@ type Props = {
 };
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params;
+  const { slug } = params; // ✅ Fixed this line
+
   const siteConfig = await getSiteConfig();
   const pages = await getPages();
   const page = await getPage(slug);
@@ -35,20 +33,31 @@ export default async function Page({ params }: Props) {
           case "textWithImage":
             return <TextWithImage key={index} textWithImage={section} />;
           case "contactForm":
-            return <Contact 
-                      key={index} 
-                      title={section.title} 
-                      text={section.text} 
-                      address={siteConfig[0].address} 
-                      email={siteConfig[0].email} />;
+            return (
+              <Contact
+                key={index}
+                title={section.title}
+                text={section.text}
+                address={siteConfig[0].address}
+                email={siteConfig[0].email}
+              />
+            );
           case "conveyancingQuote":
             const tcnconfig = {
               licence: siteConfig[0]?.tcnLicenceKey || "",
               siteName: siteConfig[0]?.title || "Default Site Name",
-            }
+            };
             return <ConveyancingQuoteDisplay key={index} quote={section} tcnConfig={tcnconfig} />;
           case "timeline":
-            return <Timeline _type="timeline" key={index} items={section.items} title={section.title} strapline={section.strapline} />;
+            return (
+              <Timeline
+                _type="timeline"
+                key={index}
+                items={section.items}
+                title={section.title}
+                strapline={section.strapline}
+              />
+            );
           case "posts":
             return <PostList key={index} posts={posts} />;
           default:
