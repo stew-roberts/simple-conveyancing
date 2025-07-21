@@ -39,7 +39,7 @@ const ConveyancingQuoteDisplay: React.FC<Props> = ({ tcnConfig, quote }) => {
       const script = document.getElementById("tcn-script");
       if (script) script.remove();
     };
-  }, []);
+  }, [tcnConfig.licence]);
 
   if (!quote) return null;
 
