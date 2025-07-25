@@ -33,7 +33,7 @@ const config = defineConfig({
           .title('Content')
           .items([
             S.documentTypeListItem('siteConfig').title('Site Configuration'),
-            S.listItem({ ...rest, key }), // ✅ Key passed directly
+            S.listItem({ ...rest }), // ✅ Key passed directly
             S.documentTypeListItem('post').title('Posts'),
             S.documentTypeListItem('author').title('Authors'),
             S.documentTypeListItem('category').title('Categories'),
