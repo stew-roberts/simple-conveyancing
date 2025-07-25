@@ -46,7 +46,7 @@ const ConveyancingQuoteDisplay: React.FC<Props> = ({ tcnConfig, quote }) => {
   const { title, description } = quote;
 
   return (
-    <div>
+    <div className="container mx-auto my-8">
       { description && <TextOnly title={title} text={quote.description} /> }
       <div id="conveyancing-quotes"></div>
     </div>
