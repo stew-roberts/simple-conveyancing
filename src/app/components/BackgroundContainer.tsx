@@ -1,7 +1,7 @@
 import React from "react";
-import { BackgroundOptionsType } from "@sanity/types";
+import { BackgroundOptionsType } from "@cms/types";
 import imageUrlBuilder from "@sanity/image-url";
-import clientConfig from "@sanity/utils/config/client.config";
+import clientConfig from "@cms/utils/config/client.config";
 
 type Props = {
   children: React.ReactNode;

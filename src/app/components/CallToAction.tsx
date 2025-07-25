@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationLink } from "./NavigationLink";
-import { CallToActionType} from "@sanity/types";
+import { CallToActionType} from "@cms/types";
 
 type Props = {
   cta: CallToActionType;

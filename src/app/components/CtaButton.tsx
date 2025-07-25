@@ -1,5 +1,5 @@
 import React from "react";
-import { CallToActionType } from "@sanity/types";
+import { CallToActionType } from "@cms/types";
 
 type Props = {
   cta: CallToActionType;

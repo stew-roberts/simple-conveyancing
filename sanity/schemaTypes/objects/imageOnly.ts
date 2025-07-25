@@ -1,11 +1,11 @@
 import { defineType, defineField } from 'sanity';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { FaImage } from 'react-icons/fa'; // This is a React component
 
 export default defineType({
   name: 'imageOnly',
   title: 'Image Only',
   type: 'object',
+  icon: FaImage,
   fields: [
     defineField({
       name: 'image',
@@ -24,13 +24,13 @@ export default defineType({
   ],
   preview: {
     select: {
-        altText: 'altText', // Selects the image field for preview
+      title: 'title',
+      media: 'icon',
     },
-    prepare({ altText }) {
+    prepare({ title }) {
       return {
-        title: altText ? altText : 'No alt text provided',
-        subtitle: 'Image Section',
-        media: faImage,
+        title: title,
+        subtitle: 'Image Only',
       };
     },
   },

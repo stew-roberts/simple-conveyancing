@@ -1,5 +1,5 @@
 import React from 'react'
-import { AddressType } from '@sanity/types'
+import { AddressType } from '@cms/types'
 import ContactForm from './ContactForm'
 import TextOnly from './TextOnly'
 import { Address } from './Address'

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { getSlugForLink } from "@sanity/utils/sanity-utils";
-import { NavLinkType } from '@sanity/types';
+import { getSlugForLink } from "@cms/utils/sanity-utils";
+import { NavLinkType } from '@cms/types';
 
 export const NavigationLink: React.FC<{link: NavLinkType, className?: string}> = ({link, className}) => {
   const { displayText, linkType, internalLink, externalLink } = link;

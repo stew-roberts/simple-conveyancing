@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
-import clientConfig from "@sanity/utils/config/client.config";
+import clientConfig from "@cms/utils/config/client.config";
 
 import type { SanityImageAsset, SanityReference } from "sanity-codegen";
 

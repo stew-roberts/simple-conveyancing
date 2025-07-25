@@ -2,7 +2,7 @@
 
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
 
 type TextOnlyProps = {
   title: string;

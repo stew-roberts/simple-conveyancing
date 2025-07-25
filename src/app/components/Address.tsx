@@ -1,5 +1,5 @@
 import React from 'react'
-import { AddressType } from '@sanity/types'
+import { AddressType } from '@cms/types'
 
 type Props = {
   address: AddressType

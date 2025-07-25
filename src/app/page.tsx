@@ -1,6 +1,6 @@
-import { getPages } from "@sanity/utils/sanity-utils";
-import { getPage } from "@sanity/utils/sanity-utils";
-import { getSiteConfig } from "@sanity/utils/sanity-utils";
+import { getPages } from "@cms/utils/sanity-utils";
+import { getPage } from "@cms/utils/sanity-utils";
+import { getSiteConfig } from "@cms/utils/sanity-utils";
 import { Navigation } from "./components/Navigation";
 
 import Footer from "./components/Footer";
@@ -21,7 +21,8 @@ export default async function Home() {
           case "hero":
             return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
           case "textOnly":
-            return <TextOnly key={index} title={section.title} text={section.text} />;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return <TextOnly key={index} title={section.title} text={section.text as any} />;
           case "textWithImage":
             return <TextWithImage key={index} textWithImage={section} />;
           default:

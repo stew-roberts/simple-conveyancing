@@ -1,17 +1,17 @@
-import { getPages } from "@sanity/utils/sanity-utils";
-import { getPost } from "@sanity/utils/sanity-utils";
-import { getSiteConfig } from "@sanity/utils/sanity-utils";
+import { getPages } from "@cms/utils/sanity-utils";
+import { getPost } from "@cms/utils/sanity-utils";
+import { getSiteConfig } from "@cms/utils/sanity-utils";
 import { Navigation } from "@components/Navigation";
 import { PortableText } from "next-sanity";
 import Logo from "@components/Logo";
 import Footer from "@components/Footer";
 import Tag from "@components/Tag";
 
-type Props = {
-  params: { slug: string };
-};
-
-export default async function Page({ params }: Props) {
+export default async function Page({
+    params,
+  }: {
+    params: Promise<{ slug: string }>
+  }) {
   const { slug } = await params;
   const siteConfig = await getSiteConfig();
   const pages = await getPages();

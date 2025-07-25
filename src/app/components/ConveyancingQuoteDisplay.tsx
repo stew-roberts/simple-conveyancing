@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { ConveyancingQuoteType } from "@sanity/types";
+import { ConveyancingQuoteType } from "@cms/types";
 import TextOnly from "./TextOnly";
 
 type Props = {

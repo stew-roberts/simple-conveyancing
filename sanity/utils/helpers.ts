@@ -1,6 +1,6 @@
 import { createClient, groq } from "next-sanity";
-import clientConfig from "@sanity/utils/config/client.config";
-import { getLocationLink } from "@sanity/utils/sanity-utils";
+import clientConfig from "@cms/utils/config/client.config";
+import { getLocationLink } from "@cms/utils/sanity-utils";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function replaceLocationInContent<T>(content: T, location: string): T {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { Page, SiteConfigType } from "@sanity/types";
+import { Page, SiteConfigType } from "@cms/types";
 import Link from "next/link";
 import Logo from './Logo';
 

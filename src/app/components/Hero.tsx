@@ -1,7 +1,7 @@
 import React from 'react';
-import { HeroType, SiteConfigType, CallToActionType } from '@sanity/types';
+import { HeroType, SiteConfigType, CallToActionType } from '@cms/types';
 import imageUrlBuilder from '@sanity/image-url';
-import clientConfig from "@sanity/utils/config/client.config";
+import clientConfig from "@cms/utils/config/client.config";
 import Logo from './Logo';
 import CallToAction from './CallToAction';
 

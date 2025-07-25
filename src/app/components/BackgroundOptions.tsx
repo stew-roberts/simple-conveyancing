@@ -1,8 +1,8 @@
 import React from "react";
-import { BackgroundOptions } from "@sanity/types/sanity-schema";
+import { BackgroundOptionsType } from "@cms/types";
 
 type Props = {
-  backgroundOptions: BackgroundOptions;
+  backgroundOptions: BackgroundOptionsType;
   children: React.ReactNode;
 };
 
@@ -16,8 +16,8 @@ const BackgroundContainer: React.FC<Props> = ({ backgroundOptions, children }) =
 
   const containerStyle: React.CSSProperties = {
     backgroundColor: enableBackgroundColour ? backgroundColour || "transparent" : "transparent",
-    backgroundImage: enableBackgroundImage && backgroundImage?.asset?.url 
-      ? `url(${backgroundImage.asset.url})` 
+    backgroundImage: enableBackgroundImage && backgroundImage 
+      ? `url(${backgroundImage})` 
       : undefined,
     backgroundSize: "cover",
     backgroundPosition: "center",

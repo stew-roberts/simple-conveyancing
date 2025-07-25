@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PostsType } from "@sanity/types";
+import { PostsType } from "@cms/types";
 
 type PostGridProps = {
   posts: PostsType[];

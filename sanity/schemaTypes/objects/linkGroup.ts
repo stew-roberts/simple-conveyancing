@@ -1,14 +1,11 @@
 import { defineType, defineField } from 'sanity';
-import React from 'react';
-
-// Import Font Awesome icon
-import { faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { FaSitemap } from 'react-icons/fa'; // Importing a React icon for the sitemap
 
 export default defineType({
   name: 'linkGroup',
   type: 'object',
   title: 'Link Group',
-  icon: faSitemap,
+  icon: FaSitemap,
   fields: [
     defineField({
       name: 'groupTitle',

@@ -1,6 +1,6 @@
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import { TextWithImageType } from "@sanity/types";
+import { TextWithImageType } from "@cms/types";
 import { BackgroundContainer } from "./BackgroundContainer";
 import { CtaButton } from "./CtaButton";
 import Image from "next/image";

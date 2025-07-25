@@ -1,7 +1,7 @@
 import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
-import client from "@sanity/utils/config/client.config";
-import { SiteConfigType } from '@sanity/types';
+import client from "@cms/utils/config/client.config";
+import { SiteConfigType } from '@cms/types';
 import Image from 'next/image';
 
 interface LogoProps {

@@ -1,5 +1,5 @@
-import { getSiteConfig } from "@sanity/utils/sanity-utils";
-import { getRoutes } from "@sanity/utils/helpers"
+import { getSiteConfig } from "@cms/utils/sanity-utils";
+import { getRoutes } from "@cms/utils/helpers"
 
 export default async function sitemap() {
 	const siteConfig = await getSiteConfig();

@@ -1,6 +1,6 @@
 import { createClient, groq } from "next-sanity";
-import { Page, SiteConfigType, NavLinkType, PostsType } from "@sanity/types";
-import clientConfig from "@sanity/utils/config/client.config";
+import { Page, SiteConfigType, NavLinkType, PostsType } from "@cms/types";
+import clientConfig from "@cms/utils/config/client.config";
 
 export async function getSiteConfig(): Promise<SiteConfigType[]> {
     return createClient(clientConfig).fetch(groq`*[_type == "siteConfig"]  | order(orderRank){

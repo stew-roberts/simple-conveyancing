@@ -36,12 +36,13 @@ export default defineType({
       to: [{ type: 'page' }], // Assuming "page" is your document type for pages
       hidden: ({ parent }) => parent?.linkType !== 'internal',
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (context.parent?.linkType === 'internal' && !value) {
-            return 'Internal page is required for internal links.';
-          }
-          return true;
-        }),
+      Rule.custom((value, context) => {
+        const parent = context.parent as { linkType?: string };
+        if (parent?.linkType === 'internal' && !value) {
+          return 'Internal page is required for internal links.';
+        }
+        return true;
+      }),
     }),
     defineField({
       name: 'url',
@@ -50,12 +51,13 @@ export default defineType({
       description: 'Required for external links. Enter the full URL (e.g., "https://example.com").',
       hidden: ({ parent }) => parent?.linkType !== 'external',
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          if (context.parent?.linkType === 'external' && !value) {
-            return 'External URL is required for external links.';
-          }
-          return true;
-        }),
+      Rule.custom((value, context) => {
+        const parent = context.parent as { linkType?: string };
+        if (parent?.linkType === 'external' && !value) {
+          return 'External URL is required for external links.';
+        }
+        return true;
+      }),
     }),
     defineField({
       name: 'openInNewTab',

@@ -1,5 +1,5 @@
-import { getPages, getPage, getSiteConfig } from "@sanity/utils/sanity-utils";
-import { replaceLocationInContent } from "@sanity/utils/helpers";
+import { getPages, getPage, getSiteConfig } from "@cms/utils/sanity-utils";
+import { replaceLocationInContent } from "@cms/utils/helpers";
 import { Navigation } from "@components/Navigation";
 import Footer from "@components/Footer";
 import HeroSection from "@components/Hero";
@@ -7,11 +7,11 @@ import TextOnly from "@components/TextOnly";
 import TextWithImage from "@components/TextWithImage";
 import ConveyancingQuoteDisplay from "@components/ConveyancingQuoteDisplay";
 
-type Props = {
-  params: { location: string };
-};
-
-export default async function Page({ params }: Props) {
+export default async function Page({
+    params,
+  }: {
+    params: Promise<{ location: string }>
+  }) {
   const { location } = await params;
   const siteConfig = await getSiteConfig();
   const pages = await getPages();
@@ -30,7 +30,8 @@ export default async function Page({ params }: Props) {
           case "hero":
             return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
           case "textOnly":
-            return <TextOnly key={index} title={section.title} text={section.text} />;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return <TextOnly key={index} title={section.title} text={section.text as any} />;
           case "textWithImage":
             return <TextWithImage key={index} textWithImage={section} />;
           case "conveyancingQuote":

@@ -1,4 +1,5 @@
-import { getPages, getPage, getPosts, getSiteConfig } from "@sanity/utils/sanity-utils";
+import { notFound } from "next/navigation";
+import { getPages, getPage, getPosts, getSiteConfig } from "@cms/utils/sanity-utils";
 import { Navigation } from "@components/Navigation";
 import Footer from "@components/Footer";
 import HeroSection from "@components/Hero";
@@ -9,27 +10,32 @@ import Contact from "@components/Contact";
 import Timeline from "@components/Timeline";
 import PostList from "@components/PostList";
 
-type Props = {
-  params: { slug: string };
-};
-
-export default async function Page({ params }: Props) {
-  const { slug } = params; // ✅ Fixed this line
+export default async function Page({
+    params,
+  }: {
+    params: Promise<{ slug: string }>
+  }) {
+  const { slug } = await params; // ✅ Fixed this line
 
   const siteConfig = await getSiteConfig();
   const pages = await getPages();
   const page = await getPage(slug);
   const posts = await getPosts();
 
+  if (!page) {
+    notFound();
+  }
+
   return (
     <div>
       <Navigation pages={pages} siteConfig={siteConfig} />
-      {page.content?.map((section, index) => {
+      {page?.content?.map((section, index) => {
         switch (section._type) {
           case "hero":
             return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
           case "textOnly":
-            return <TextOnly key={index} title={section.title} text={section.text} />;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return <TextOnly key={index} title={section.title} text={section.text as any} />;
           case "textWithImage":
             return <TextWithImage key={index} textWithImage={section} />;
           case "contactForm":

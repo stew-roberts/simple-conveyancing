@@ -1,5 +1,5 @@
 import React from "react";
-import { SiteConfigType } from "@sanity/types";
+import { SiteConfigType } from "@cms/types";
 import { NavigationLink } from "./NavigationLink";
 import Link from "next/link";
 

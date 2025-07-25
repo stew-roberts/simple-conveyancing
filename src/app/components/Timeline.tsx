@@ -1,5 +1,5 @@
 import React from 'react'
-import type { TimelineType, TimelineItemType } from '@sanity/types'
+import type { TimelineType, TimelineItemType } from '@cms/types'
 
 type TimelineProps = TimelineType & {
   className?: string
