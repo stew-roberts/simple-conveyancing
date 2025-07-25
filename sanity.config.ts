@@ -27,7 +27,7 @@ const config = defineConfig({
         });
 
         // Remove `key` to avoid React warning
-        const { key, ...rest } = pageListItem;
+        const { ...rest } = pageListItem;
 
         return S.list()
           .title('Content')
