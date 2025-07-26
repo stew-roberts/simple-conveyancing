@@ -6,6 +6,7 @@ import HeroSection from "@components/Hero";
 import TextOnly from "@components/TextOnly";
 import TextWithImage from "@components/TextWithImage";
 import ConveyancingQuoteDisplay from "@components/ConveyancingQuoteDisplay";
+import { ConveyancingQuoteType, HeroType, TextOnlyType, TextWithImageType } from "@cms/types";
 
 export default async function Page({
     params,
@@ -28,18 +29,22 @@ export default async function Page({
       {page && page.content?.map((section, index) => {
         switch (section._type) {
           case "hero":
-            return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
+            const hero = section as HeroType;
+            return <HeroSection key={index} hero={hero} siteConfig={siteConfig} />;
           case "textOnly":
+            const textOnly = section as TextOnlyType;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            return <TextOnly key={index} title={section.title} text={section.text as any} />;
+            return <TextOnly key={index} title={textOnly.title} text={textOnly.text as any} />;
           case "textWithImage":
-            return <TextWithImage key={index} textWithImage={section} />;
+            const textWithImage = section as TextWithImageType;
+            return <TextWithImage key={index} textWithImage={textWithImage} />;
           case "conveyancingQuote":
             const tcnconfig = {
               licence: siteConfig[0]?.tcnLicenceKey || "",
               siteName: siteConfig[0]?.title || "Default Site Name",
             }
-            return <ConveyancingQuoteDisplay key={index} quote={section} tcnConfig={tcnconfig} />;
+            const quote = section as ConveyancingQuoteType;
+            return <ConveyancingQuoteDisplay key={index} quote={quote} tcnConfig={tcnconfig} />;
           default:
             return null;
         }
