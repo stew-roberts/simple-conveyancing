@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getPages, getPage, getPosts, getSiteConfig } from "@cms/utils/sanity-utils";
 import { Navigation } from "@components/Navigation";
+import { ConveyancingQuoteType, HeroType, TextOnlyType, TextWithImageType, TimelineType } from "@cms/types";
 import Footer from "@components/Footer";
 import HeroSection from "@components/Hero";
 import TextOnly from "@components/TextOnly";
@@ -9,6 +10,7 @@ import ConveyancingQuoteDisplay from "@components/ConveyancingQuoteDisplay";
 import Contact from "@components/Contact";
 import Timeline from "@components/Timeline";
 import PostList from "@components/PostList";
+import { ContactFormType } from "@cms/types/contact-form-type";
 
 export default async function Page({
     params,
@@ -32,18 +34,20 @@ export default async function Page({
       {page?.content?.map((section, index) => {
         switch (section._type) {
           case "hero":
-            return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
+            return <HeroSection key={index} hero={section as HeroType} siteConfig={siteConfig} />;
           case "textOnly":
+            const textOnly = section as TextOnlyType;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            return <TextOnly key={index} title={section.title} text={section.text as any} />;
+            return <TextOnly key={index} title={textOnly.title} text={textOnly.text as any} />;
           case "textWithImage":
-            return <TextWithImage key={index} textWithImage={section} />;
+            return <TextWithImage key={index} textWithImage={section as TextWithImageType} />;
           case "contactForm":
+            const contactForm = section as ContactFormType;
             return (
               <Contact
                 key={index}
-                title={section.title}
-                text={section.text}
+                title={contactForm.title}
+                text={contactForm.text}
                 address={siteConfig[0].address}
                 email={siteConfig[0].email}
               />
@@ -53,15 +57,16 @@ export default async function Page({
               licence: siteConfig[0]?.tcnLicenceKey || "",
               siteName: siteConfig[0]?.title || "Default Site Name",
             };
-            return <ConveyancingQuoteDisplay key={index} quote={section} tcnConfig={tcnconfig} />;
+            return <ConveyancingQuoteDisplay key={index} quote={section as ConveyancingQuoteType} tcnConfig={tcnconfig} />;
           case "timeline":
+            const timeline = section as TimelineType;
             return (
               <Timeline
-                _type="timeline"
                 key={index}
-                items={section.items}
-                title={section.title}
-                strapline={section.strapline}
+                _type="timeline"
+                items={timeline.items}
+                title={timeline.title}
+                strapline={timeline.strapline}
               />
             );
           case "posts":
