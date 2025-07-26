@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import HeroSection from "./components/Hero";
 import TextOnly from "./components/TextOnly";
 import TextWithImage from "./components/TextWithImage";
+import { HeroType, TextOnlyType, TextWithImageType } from "@cms/types";
 
 export default async function Home() {
   const siteConfig = await getSiteConfig();
@@ -19,12 +20,15 @@ export default async function Home() {
       {page.content?.map((section, index) => {
         switch (section._type) {
           case "hero":
-            return <HeroSection key={index} hero={section} siteConfig={siteConfig} />;
+            const hero = section as HeroType;
+            return <HeroSection key={index} hero={hero} siteConfig={siteConfig} />;
           case "textOnly":
+            const textOnly = section as TextOnlyType;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            return <TextOnly key={index} title={section.title} text={section.text as any} />;
+            return <TextOnly key={index} title={textOnly.title} text={textOnly.text as any} />;
           case "textWithImage":
-            return <TextWithImage key={index} textWithImage={section} />;
+            const textWithImage = section as TextWithImageType;
+            return <TextWithImage key={index} textWithImage={textWithImage} />;
           default:
             return null;
         } 
