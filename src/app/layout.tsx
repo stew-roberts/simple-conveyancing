@@ -1,22 +1,33 @@
 import type { Metadata } from "next";
+import { getSiteConfig } from "@cms/utils/sanity-utils";
 import "./globals.css";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const siteConfigData = await getSiteConfig();
+  const siteConfig = siteConfigData?.[0];
 
-export const metadata: Metadata = {
-  title: "Simple Conveyancing",
-  description: "Simple and easy low cost conveyancing quotes",
-};
+  const seo = siteConfig?.globalSEO;
 
-export default function RootLayout({
+  return {
+    title: seo?.metaTitle || siteConfig?.title || "Default Title",
+    description: seo?.metaDescription || "Default site description",
+    keywords: seo?.keywords || [],
+    openGraph: {
+      images: seo?.["og-image"] ? [{ url: seo["og-image"] }] : undefined,
+      title: seo?.metaTitle || siteConfig?.title,
+      description: seo?.metaDescription,
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

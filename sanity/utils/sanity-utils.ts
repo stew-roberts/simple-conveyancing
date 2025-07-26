@@ -8,30 +8,42 @@ export async function getSiteConfig(): Promise<SiteConfigType[]> {
         _type,
         title,
         url,
-        logo,
+        telephone,
         email,
         address,
         tcnLicenceKey,
-        "logo": logo.asset->url,
+        includeConveyancingPlugin,
         alt,
+        "logo": logo.asset->url,
+        "frontpageSlug": frontpage->slug.current,
         "footer": {
-            copyrightText,
-            linkGroups[]{
-                groupTitle,
-                links[]{
-                    displayText,
-                    linkType,
-                    internalLink->{
-                        _type,
-                        title,
-                        slug
-                    },
-                    "externalLink":{
-                        url
-                    }
-                }
+        footerTitle,
+        copyrightText,
+        backgroundOptions[],
+        linkGroups[]{
+            groupTitle,
+            links[]{
+            displayText,
+            linkType,
+            internalLink->{
+                _type,
+                title,
+                slug
+            },
+            "externalLink": {
+                url
             }
-        }  
+            }
+        },
+        textGroups[] // Assuming these are inline objects, not references
+        },
+        globalSEO {
+            _type,
+            metaTitle,
+            metaDescription,
+            keywords[],
+            "ogImage": openGraphImage.asset->url
+        },
     }`);
 }
 
