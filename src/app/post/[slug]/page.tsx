@@ -29,8 +29,12 @@ export default async function Page({
             backgroundSize: 'cover',
         }}
         >
-            <div className="flex flex-row w-full h-3/4 items-center justify-between px-48 text-white gap-72">
-                <Logo siteConfig={siteConfig} />
+            <div className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-48 py-12 text-white gap-12">
+                <Logo 
+                  siteConfig={siteConfig}
+                  className="w-40 h-20 sm:w-56 sm:h-28 lg:w-96 lg:h-96"
+                  imageClassName="object-contain"
+                />
                 <div className="lg:flex lg:flex-col w-96 sm: hidden">
                     <h1 className="text-3xl font-normal mb-4">{post.title}</h1>
                     {post.subtitle && <p className="text-xl font-light">{post.subtitle}</p>}
