@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import * as FAIcons from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -15,7 +16,7 @@ export const FontAwesomeIcon = ({
   widthClass = "w-10",
   heightClass = "h-10",
   className = "",
-}: Props): JSX.Element => {
+}: Props): ReactElement => {
   const IconComponent: IconType = FAIcons[icon];
 
   if (!IconComponent) {
